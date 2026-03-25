@@ -30,34 +30,34 @@ impl Executor {
         Executor { pose }
     }
 
-    pub fn execute(&mut self, cmds: &str) {
-        for cmd in cmds.chars() {
-            match cmd {
-                'M' => match self.pose.heading {
-                    'N' => self.pose.y += 1,
-                    'S' => self.pose.y -= 1,
-                    'E' => self.pose.x += 1,
-                    'W' => self.pose.x -= 1,
-                    _ => {} // 忽略非法朝向
-                },
-                'L' => match self.pose.heading {
-                    'N' => self.pose.heading = 'W',
-                    'W' => self.pose.heading = 'S',
-                    'S' => self.pose.heading = 'E',
-                    'E' => self.pose.heading = 'N',
-                    _ => {}
-                },
-                'R' => match self.pose.heading {
-                    'N' => self.pose.heading = 'E',
-                    'E' => self.pose.heading = 'S',
-                    'S' => self.pose.heading = 'W',
-                    'W' => self.pose.heading = 'N',
-                    _ => {}
-                },
-                _ => {} // 根据约束，假设参数均合法，此处忽略非MLR的其他字符
-            }
-        }
-    }
+    // pub fn execute(&mut self, cmds: &str) {
+    //     for cmd in cmds.chars() {
+    //         match cmd {
+    //             'M' => match self.pose.heading {
+    //                 'N' => self.pose.y += 1,
+    //                 'S' => self.pose.y -= 1,
+    //                 'E' => self.pose.x += 1,
+    //                 'W' => self.pose.x -= 1,
+    //                 _ => {} // 忽略非法朝向
+    //             },
+    //             'L' => match self.pose.heading {
+    //                 'N' => self.pose.heading = 'W',
+    //                 'W' => self.pose.heading = 'S',
+    //                 'S' => self.pose.heading = 'E',
+    //                 'E' => self.pose.heading = 'N',
+    //                 _ => {}
+    //             },
+    //             'R' => match self.pose.heading {
+    //                 'N' => self.pose.heading = 'E',
+    //                 'E' => self.pose.heading = 'S',
+    //                 'S' => self.pose.heading = 'W',
+    //                 'W' => self.pose.heading = 'N',
+    //                 _ => {}
+    //             },
+    //             _ => {} // 根据约束，假设参数均合法，此处忽略非MLR的其他字符
+    //         }
+    //     }
+    // }
 
     pub fn query(&self) -> Pose {
         self.pose
